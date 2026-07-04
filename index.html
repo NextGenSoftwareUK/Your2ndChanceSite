@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your 2nd Chance — We See You</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#030714;
+  --bg-card:#0a1428;
+  --rose:#ff5fa0;
+  --gold:#f0a500;
+  --violet:#a855f7;
+  --green:#00e87c;
+  --blue:#00c8ff;
+  --text:#a8bfd8;
+  --heading:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.7;overflow-x:hidden}
+
+/* ── STARS ── */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(168,85,247,.08),transparent 60%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(255,95,160,.05),transparent 60%);pointer-events:none;z-index:0}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,7,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,95,160,.1)}
+.nav-brand{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;color:#fff;text-decoration:none}
+.nav-brand span{color:var(--rose)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--text);text-decoration:none;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--rose)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--rose);border:1px solid rgba(255,95,160,.4);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{background:rgba(255,95,160,.08);border-color:rgba(255,95,160,.7)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;z-index:101}
+.nav-toggle span{display:block;width:100%;height:2px;background:#a8bfd8;transition:transform .25s,opacity .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:820px){
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(3,7,20,.97);padding:100px 40px 40px;gap:28px;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:flex}
+  nav{padding:16px 20px}
+}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:1}
+.hero-icu{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.35em;color:rgba(255,95,160,.7);margin-bottom:32px}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(52px,10vw,110px);font-weight:900;letter-spacing:.04em;color:#fff;line-height:1;margin-bottom:16px}
+.hero-title span{color:var(--rose);display:block}
+.hero-sub{font-family:'Orbitron',sans-serif;font-size:clamp(14px,2vw,20px);font-weight:700;letter-spacing:.12em;color:var(--violet);margin-bottom:36px}
+.hero-body{font-size:clamp(16px,2.2vw,20px);color:var(--text);line-height:1.85;max-width:680px;margin:0 auto 48px}
+.hero-body strong{color:#fff}
+.btn-rose{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:.12em;background:var(--rose);color:#030714;border-radius:999px;padding:16px 40px;text-decoration:none;font-weight:700;transition:background .2s,transform .2s}
+.btn-rose:hover{background:#ff85b8;transform:translateY(-2px)}
+.btn-outline{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:.12em;background:transparent;color:var(--text);border:1px solid rgba(168,255,255,.2);border-radius:999px;padding:16px 40px;text-decoration:none;transition:border-color .2s,color .2s,transform .2s}
+.btn-outline:hover{border-color:rgba(168,255,255,.5);color:#fff;transform:translateY(-2px)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ── PULSE HEART ANIMATION ── */
+.heart-wrap{margin:0 auto 48px;position:relative;width:120px;height:120px}
+.heart-wrap svg{animation:heartbeat 2s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.15)}28%{transform:scale(1)}42%{transform:scale(1.1)}70%{transform:scale(1)}}
+.heart-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,95,160,.2);animation:ring-out 2s ease-out infinite}
+.heart-ring:nth-child(2){animation-delay:.4s}
+.heart-ring:nth-child(3){animation-delay:.8s}
+@keyframes ring-out{0%{transform:scale(.8);opacity:.6}100%{transform:scale(1.8);opacity:0}}
+
+/* ── SECTION ── */
+.section{padding:80px 40px;position:relative;z-index:1}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--rose);margin-bottom:14px;text-align:center}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(22px,4vw,38px);font-weight:900;letter-spacing:.05em;color:#fff;text-align:center;margin-bottom:16px;line-height:1.2}
+.section-line{display:block;width:60px;height:2px;background:linear-gradient(90deg,var(--rose),transparent);margin:0 auto 24px}
+.section-sub{font-size:17px;color:var(--text);text-align:center;max-width:680px;margin:0 auto 56px;line-height:1.8}
+
+/* ── YOU ARE NOT ALONE BAND ── */
+.truth-band{background:linear-gradient(135deg,rgba(255,95,160,.06),rgba(168,85,247,.06));border:1px solid rgba(255,95,160,.2);border-radius:20px;padding:56px 48px;max-width:900px;margin:0 auto;text-align:center}
+.truth-quote{font-family:'Orbitron',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:900;color:#fff;line-height:1.35;margin-bottom:28px}
+.truth-quote em{color:var(--rose);font-style:normal;display:block;margin-top:8px}
+.truth-body{font-size:17px;color:var(--text);line-height:1.85;margin-bottom:20px}
+.truth-body strong{color:#fff}
+
+/* ── PATH CARDS ── */
+.paths-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto}
+.path-card{background:var(--bg-card);border-radius:20px;padding:36px 32px;text-decoration:none;display:flex;flex-direction:column;gap:14px;transition:transform .25s,border-color .25s;border:1px solid rgba(255,255,255,.06)}
+.path-card:hover{transform:translateY(-6px)}
+.path-card.rose{border-color:rgba(255,95,160,.2)}
+.path-card.rose:hover{border-color:rgba(255,95,160,.45)}
+.path-card.violet{border-color:rgba(168,85,247,.2)}
+.path-card.violet:hover{border-color:rgba(168,85,247,.45)}
+.path-card.green{border-color:rgba(0,232,124,.2)}
+.path-card.green:hover{border-color:rgba(0,232,124,.45)}
+.path-card.gold{border-color:rgba(240,165,0,.2)}
+.path-card.gold:hover{border-color:rgba(240,165,0,.45)}
+.path-icon{font-size:44px}
+.path-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em}
+.path-label.rose{color:var(--rose)}
+.path-label.violet{color:var(--violet)}
+.path-label.green{color:var(--green)}
+.path-label.gold{color:var(--gold)}
+.path-title{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;letter-spacing:.06em;color:#fff}
+.path-desc{font-size:15px;color:var(--text);line-height:1.7;flex:1}
+.path-arrow{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;margin-top:8px}
+.path-arrow.rose{color:var(--rose)}
+.path-arrow.violet{color:var(--violet)}
+.path-arrow.green{color:var(--green)}
+.path-arrow.gold{color:var(--gold)}
+
+/* ── TRUTH PILLS ── */
+.truth-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.truth-pill{background:rgba(255,95,160,.07);border:1px solid rgba(255,95,160,.2);border-radius:999px;padding:10px 22px;font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--rose);letter-spacing:.08em}
+
+/* ── FINAL CTA ── */
+.cta-section{text-align:center;padding:100px 40px;position:relative;z-index:1}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(255,95,160,.06),transparent 70%);pointer-events:none}
+.cta-title{font-family:'Orbitron',sans-serif;font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px}
+.cta-title em{color:var(--rose);font-style:normal}
+.cta-sub{font-size:18px;color:var(--text);max-width:580px;margin:0 auto 40px;line-height:1.8}
+.cta-sub strong{color:#fff}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(255,95,160,.1);padding:40px;text-align:center;position:relative;z-index:1}
+.footer-brand{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;color:#fff;margin-bottom:8px}
+.footer-brand span{color:var(--rose)}
+.footer-sub{font-size:14px;color:#a8bfd8;margin-bottom:20px}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;list-style:none}
+.footer-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:#a8bfd8;text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--rose)}
+
+/* ── CONNECT AVATAR BUTTON ── */
+.av-connect-btn{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#030714;background:var(--rose);border:none;border-radius:999px;padding:9px 18px;cursor:pointer;white-space:nowrap;transition:background .2s}
+.av-connect-btn:hover{background:#ff85b8}
+.av-connected-badge{display:none;align-items:center;gap:8px;background:rgba(255,95,160,.1);border:1px solid rgba(255,95,160,.25);border-radius:999px;padding:6px 14px}
+.av-connected-badge.show{display:flex}
+.av-avatar-name{font-family:'Share Tech Mono',monospace;font-size:11px;color:#fff;letter-spacing:.08em}
+.av-karma-pill{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--violet);cursor:pointer}
+.av-logout-btn{background:none;border:none;color:rgba(168,191,216,.5);cursor:pointer;font-size:12px;padding:0 2px}
+.av-logout-btn:hover{color:#fff}
+
+/* ── MODAL ── */
+.av-modal-overlay{display:none;position:fixed;inset:0;background:rgba(3,7,20,.85);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center}
+.av-modal-overlay.open{display:flex}
+.av-modal{background:#0a1428;border:1px solid rgba(255,95,160,.2);border-radius:20px;padding:40px;width:100%;max-width:400px;text-align:center;position:relative}
+.av-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(168,191,216,.5);font-size:18px;cursor:pointer}
+.av-modal-close:hover{color:#fff}
+.av-modal-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--rose);margin-bottom:10px}
+.av-modal-title{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:8px}
+.av-modal-sub{font-size:14px;color:var(--text);margin-bottom:24px;line-height:1.6}
+.av-field{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,95,160,.2);border-radius:10px;padding:12px 16px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:15px;margin-bottom:12px;outline:none;transition:border-color .2s}
+.av-field:focus{border-color:rgba(255,95,160,.5)}
+.av-field::placeholder{color:rgba(168,191,216,.4)}
+.av-submit{width:100%;background:var(--rose);color:#030714;border:none;border-radius:999px;padding:13px;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.12em;cursor:pointer;margin-top:4px;transition:background .2s}
+.av-submit:hover{background:#ff85b8}
+.av-error{font-size:13px;color:#ff5f5f;margin-top:8px;min-height:20px}
+
+@media(max-width:720px){
+  .paths-grid{grid-template-columns:1fr}
+  .truth-band{padding:36px 24px}
+  .section{padding:60px 20px}
+  .hero{padding:100px 20px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">YOUR<span>2ND</span>CHANCE<span>.ICU</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#you">We See You</a></li>
+    <li><a href="#truth">Your Truth</a></li>
+    <li><a href="#paths">Your Path</a></li>
+    <li><a href="#start">Start Now</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-cta" href="#start">💜 Begin Your Journey</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="you">
+  <div class="hero-icu">I C U &nbsp;·&nbsp; I SEE YOU &nbsp;·&nbsp; YOUR2NDCHANCE.ICU</div>
+
+  <div class="heart-wrap">
+    <div class="heart-ring"></div>
+    <div class="heart-ring"></div>
+    <div class="heart-ring"></div>
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1">
+      <path d="M40 68S8 48 8 26a16 16 0 0 1 32-4 16 16 0 0 1 32 4c0 22-32 42-32 42z" fill="var(--rose)" opacity=".9"/>
+      <path d="M40 68S8 48 8 26a16 16 0 0 1 32-4 16 16 0 0 1 32 4c0 22-32 42-32 42z" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="hero-title">WE SEE<span>YOU.</span></div>
+  <div class="hero-sub">And we believe in you — even if you don't yet.</div>
+  <p class="hero-body">
+    The world may have turned its back. People may have written you off.
+    Maybe life dealt you a hand that wasn't fair. Maybe you lost your way.
+    Maybe no one ever told you how extraordinary you truly are.<br><br>
+    <strong>That ends today.</strong> This is your second chance.
+    And it starts right here.
+  </p>
+  <div class="hero-btns">
+    <a class="btn-rose" href="#paths">Show Me My Path →</a>
+    <a class="btn-outline" href="#truth">Read My Story</a>
+  </div>
+</section>
+
+<!-- YOU ARE NOT ALONE -->
+<section class="section" id="truth" style="background:rgba(255,95,160,.02)">
+  <div class="section-inner">
+    <div class="truth-band">
+      <div class="truth-quote">
+        "Everyone has a gift waiting to be discovered.
+        <em>We will help you find yours."</em>
+      </div>
+      <p class="truth-body">It doesn't matter where you've been. It doesn't matter what they said about you. It doesn't matter if you left school early, if you've been homeless, if you have a disability, if you've been through addiction, if you've made mistakes, if you've been in prison, if you've been told you're not good enough — <strong>none of that defines you.</strong></p>
+      <p class="truth-body">What defines you is what you do <strong>next.</strong></p>
+      <p class="truth-body">You are here. You are reading this. That already took courage. And somewhere inside you — underneath everything life has piled on top — there is a gift. A talent. A purpose. Something only <strong>you</strong> can bring to this world. We have built a place to help you find it, nurture it, and share it.</p>
+      <div class="truth-pills">
+        <span class="truth-pill">💜 You are not forgotten</span>
+        <span class="truth-pill">💜 You are not too late</span>
+        <span class="truth-pill">💜 You are not too broken</span>
+        <span class="truth-pill">💜 You are not alone</span>
+        <span class="truth-pill">💜 You are enough</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUR PATH -->
+<section class="section" id="paths">
+  <div class="section-inner">
+    <div class="section-kicker">CHOOSE YOUR PATH</div>
+    <h2 class="section-title">Where Does Your Journey Begin?</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">No superhero branding. No jargon. No barriers. Just four doors — each one free, each one open, each one waiting for you. Pick the one that speaks to your heart.</p>
+
+    <div class="paths-grid">
+
+      <a class="path-card rose" href="https://jla.oasisomniverse.one" target="_blank" rel="noopener">
+        <div class="path-icon">⚡</div>
+        <div class="path-label rose">LEARN · GROW · EARN</div>
+        <div class="path-title">Find Your Gift</div>
+        <p class="path-desc">Coding, music, mindfulness, nutrition, healing, survival skills, arts — whatever calls to you. Free courses, real mentors, and karma for every step forward. No qualifications needed. No experience required. Just you and your potential.</p>
+        <div class="path-arrow rose">Justice League Academy →</div>
+      </a>
+
+      <a class="path-card violet" href="https://ghn.oasisomniverse.one" target="_blank" rel="noopener">
+        <div class="path-icon">💜</div>
+        <div class="path-label violet">HEAL · CONNECT · GIVE</div>
+        <div class="path-title">Help Heal the World</div>
+        <p class="path-desc">You don't need to be a healer to take part. If you have a loving heart, you already have everything you need. Join a Love Beam — send positive energy to someone in need — and watch what happens when thousands of people focus love together.</p>
+        <div class="path-arrow violet">Global Healing Network →</div>
+      </a>
+
+      <a class="path-card green" href="https://noahsark.oasisomniverse.one" target="_blank" rel="noopener">
+        <div class="path-icon">🐾</div>
+        <div class="path-label green">RESCUE · ADOPT · PROTECT</div>
+        <div class="path-title">Save an Animal</div>
+        <p class="path-desc">Animals never judge. They love unconditionally and ask for nothing in return. Adopt a rescued animal, report a stray, or volunteer your time — and earn karma for every act of compassion. Sometimes healing yourself starts with caring for another.</p>
+        <div class="path-arrow green">Noah's Ark Animal Rescue Network →</div>
+      </a>
+
+      <a class="path-card gold" href="https://gracebook.oasisomniverse.one" target="_blank" rel="noopener">
+        <div class="path-icon">✦</div>
+        <div class="path-label gold">CONNECT · SHARE · BELONG</div>
+        <div class="path-title">Find Your People</div>
+        <p class="path-desc">A social network built on kindness, not clout. No algorithms designed to make you feel bad about yourself. Just real people, real conversations, and a community that lifts each other up. You have been alone long enough.</p>
+        <div class="path-arrow gold">GraceBook →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECOND CHANCE STATEMENT -->
+<section class="section" style="padding-top:0">
+  <div class="section-inner">
+    <div style="background:linear-gradient(135deg,rgba(240,165,0,.06),rgba(168,85,247,.06));border:1px solid rgba(240,165,0,.2);border-radius:20px;padding:52px 44px;max-width:900px;margin:0 auto;text-align:center">
+      <div style="font-size:48px;margin-bottom:20px">☀️</div>
+      <h3 style="font-family:'Orbitron',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:900;color:#fff;line-height:1.3;margin-bottom:24px">This is your moment to prove<br><em style="color:var(--gold)">them all wrong.</em></h3>
+      <p style="font-size:17px;color:var(--text);line-height:1.85;max-width:660px;margin:0 auto 20px">Every person who doubted you. Every door that closed in your face. Every time someone told you that you weren't good enough, smart enough, worthy enough.</p>
+      <p style="font-size:17px;color:var(--text);line-height:1.85;max-width:660px;margin:0 auto 20px">Show them. Not out of anger — but out of love for yourself and the world. Because the world <strong style="color:#fff">needs</strong> what only you can bring. It has always needed it. It has just been waiting for you to believe it too.</p>
+      <p style="font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-top:28px">YOUR STORY ISN'T OVER. THIS IS CHAPTER TWO.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="start">
+  <div class="section-kicker">YOUR SECOND CHAPTER STARTS NOW</div>
+  <h2 class="cta-title">One avatar.<br><em>Infinite possibilities.</em></h2>
+  <p class="cta-sub">Create your free OASIS avatar and unlock every platform — JLA, GHN, Noah's Ark, GraceBook and everything we build next. <strong>One profile. One karma score. One new beginning.</strong></p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px">
+    <a class="btn-rose" href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">💜 Create My Avatar — It's Free</a>
+    <a class="btn-outline" href="https://oasisomniverse.one" target="_blank" rel="noopener">Learn About OASIS →</a>
+  </div>
+  <p style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:#a8bfd8;margin-top:16px">NO CREDIT CARD · NO EXPERIENCE NEEDED · NO JUDGEMENT · EVER</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">YOUR<span>2ND</span>CHANCE<span>.ICU</span></div>
+  <p class="footer-sub">Part of the OASIS Omniverse — powered by love, built for everyone.</p>
+  <ul class="footer-links">
+    <li><a href="https://jla.oasisomniverse.one" target="_blank" rel="noopener">Justice League Academy</a></li>
+    <li><a href="https://ghn.oasisomniverse.one" target="_blank" rel="noopener">Global Healing Network</a></li>
+    <li><a href="https://noahsark.oasisomniverse.one" target="_blank" rel="noopener">Noah's Ark ARN</a></li>
+    <li><a href="https://gracebook.oasisomniverse.one" target="_blank" rel="noopener">GraceBook</a></li>
+    <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+    <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">Create Avatar</a></li>
+  </ul>
+</footer>
+
+<!-- CONNECT AVATAR MODAL -->
+<div class="av-modal-overlay" id="av-modal-overlay">
+  <div class="av-modal">
+    <button class="av-modal-close" id="av-modal-close">✕</button>
+    <div class="av-modal-kicker">OASIS WEB4 API</div>
+    <div class="av-modal-title">Connect Your Avatar</div>
+    <p class="av-modal-sub">Sign in with your OASIS avatar to track your journey and earn karma across every platform.</p>
+    <input class="av-field" id="bi-email" type="email" placeholder="Email address" autocomplete="username">
+    <input class="av-field" id="bi-password" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="av-submit" id="av-submit">CONNECT AVATAR</button>
+    <div class="av-error" id="av-error"></div>
+  </div>
+</div>
+
+<script>
+// Nav toggle
+document.getElementById('nav-toggle').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('nav-links').classList.toggle('open');
+});
+
+// Stars
+(function(){
+  const canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;inset:0;z-index:0;pointer-events:none';
+  document.body.prepend(canvas);
+  const ctx=canvas.getContext('2d');
+  let stars=[];
+  function resize(){canvas.width=innerWidth;canvas.height=innerHeight;stars=Array.from({length:160},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.2+.3,o:Math.random()*.6+.2,s:Math.random()*.4+.1}))}
+  resize();window.addEventListener('resize',resize);
+  (function draw(){requestAnimationFrame(draw);ctx.clearRect(0,0,canvas.width,canvas.height);stars.forEach(s=>{s.o+=s.s*.01*(Math.random()>.5?1:-1);s.o=Math.max(.1,Math.min(.8,s.o));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(168,191,216,${s.o})`;ctx.fill()})})();
+})();
+
+// OASIS Web4 Connect Avatar
+(function(){
+  const navCta=document.querySelector('.nav-cta');
+  if(!navCta)return;
+  const connectBtn=document.createElement('button');
+  connectBtn.className='av-connect-btn';
+  connectBtn.id='av-connect-btn';
+  connectBtn.textContent='⬡ CONNECT AVATAR';
+  navCta.closest('.nav-right').appendChild(connectBtn);
+
+  const badge=document.createElement('div');
+  badge.className='av-connected-badge';
+  badge.id='av-badge';
+  badge.innerHTML=`<span class="av-avatar-name" id="av-avatar-name">—</span><span class="av-karma-pill" id="av-karma-pill" title="Your karma">💜 0</span><button class="av-logout-btn" id="av-logout-btn">✕</button>`;
+  navCta.closest('.nav-right').appendChild(badge);
+  document.getElementById('av-logout-btn').addEventListener('click',logout);
+
+  const overlay=document.getElementById('av-modal-overlay');
+  document.getElementById('av-modal-close').addEventListener('click',()=>overlay.classList.remove('open'));
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
+  connectBtn.addEventListener('click',()=>overlay.classList.add('open'));
+
+  document.getElementById('av-submit').addEventListener('click',async()=>{
+    const email=document.getElementById('bi-email').value.trim();
+    const password=document.getElementById('bi-password').value;
+    const err=document.getElementById('av-error');
+    err.textContent='';
+    if(!email||!password){err.textContent='Please enter your email and password.';return;}
+    try{
+      const {OASISClient}=await import('https://esm.sh/@oasisomniverse/web4-api@2.0.2');
+      const client=new OASISClient({baseUrl:'https://api.web4.oasisomniverse.one',persistSession:true});
+      const res=await client.avatar.login({username:email,password});
+      if(res?.isError){err.textContent=res.message||'Login failed.';return;}
+      const av=res?.result?.avatar||res?.result;
+      if(av){
+        document.getElementById('av-avatar-name').textContent=av.username||av.email||'Avatar';
+        document.getElementById('av-karma-pill').textContent='💜 '+(av.karmaTotal??0);
+        connectBtn.style.display='none';
+        badge.classList.add('show');
+        overlay.classList.remove('open');
+      }
+    }catch(e){err.textContent='Connection error. Please try again.';}
+  });
+
+  function logout(){
+    connectBtn.style.display='';
+    badge.classList.remove('show');
+    document.getElementById('av-avatar-name').textContent='—';
+    document.getElementById('av-karma-pill').textContent='💜 0';
+  }
+})();
+</script>
+</body>
+</html>
